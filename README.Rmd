@@ -65,3 +65,9 @@ new_pos
 new_xy <- hilbert::position_to_coords(new_pos, coords = c("x", "y"), extent = e, n = n, attach = TRUE)
 new_xy
 ```
+
+## Roadmap
+
+- [X] General indexing/retrieval
+- [ ] 64-bit Integer Support (via `bit64`)
+- [ ] Multiprecision Integer Support (via `bignum`)

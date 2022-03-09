@@ -67,3 +67,9 @@ new_xy
 #>         x        y
 #> 1 -77.846 34.36354
 ```
+
+## Roadmap
+
+-   [x] General indexing/retrieval
+-   [ ] 64-bit Integer Support (via `bit64`)
+-   [ ] Multiprecision Integer Support (via `bignum`)
