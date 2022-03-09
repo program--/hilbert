@@ -1,0 +1,67 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# hilbert
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of hilbert is to ...
+
+## Installation
+
+You can install **hilbert** via either `remotes` or `pak`:
+
+``` r
+# pak
+pak::pkg_install("program--/hilbert")
+
+# remotes
+remotes::install_github("program--/hilbert")
+```
+
+## Example
+
+### Setting Up
+```{r setup}
+x <- -77.85641
+y <- 34.35935
+n <- 15
+e <- c(xmax = 180, xmin = -180, ymax = 90, ymin = -90)
+```
+
+### Coordinates to Position
+```{r coords2pos}
+pos <- hilbert::coords_to_position(x, y, n = n, extent = e)
+pos
+```
+
+### Position to Index
+```{r pos2index}
+index <- hilbert::index(pos, coords = c("x", "y"), n = n, attach = TRUE)
+index
+```
+
+### Index to Position
+```{r index2pos}
+new_pos <- hilbert::position(index, idx = "h", n = n, attach = FALSE)
+new_pos
+```
+
+### Position to Coordinates
+```{r pos2coords}
+new_xy <- hilbert::position_to_coords(new_pos, coords = c("x", "y"), extent = e, n = n, attach = TRUE)
+new_xy
+```

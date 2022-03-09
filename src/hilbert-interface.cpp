@@ -20,7 +20,7 @@ integers HILBERT_index_(size_t n, integers x, integers y)
             cpp11::check_user_interrupt();
         }
 
-        hilbert::curve::positionToIndex(n, xx[i], yy[i], &h[i]);
+        hilbert::curve::positionToIndex(size_t(1) << n, xx[i], yy[i], &h[i]);
     }
 
     return cpp11::as_sexp(h);
@@ -37,7 +37,7 @@ data_frame HILBERT_position_(size_t n, integers h)
             cpp11::check_user_interrupt();
         }
 
-        hilbert::curve::indexToPosition(n, hh[i], &x[i], &y[i]);
+        hilbert::curve::indexToPosition(size_t(1) << n, hh[i], &x[i], &y[i]);
     }
 
     return cpp11::writable::data_frame{
@@ -53,8 +53,8 @@ data_frame HILBERT_coords_to_xy_(size_t n, doubles x, doubles y, doubles extent)
                    yy(y.begin(), y.end());
 
     return cpp11::writable::data_frame {
-        "x"_nm = hilbert::grid::coordinateToDimension(n, xx, extent["xmax"], extent["xmin"]),
-        "y"_nm = hilbert::grid::coordinateToDimension(n, yy, extent["ymax"], extent["ymin"])
+        "x"_nm = hilbert::grid::coordinateToDimension(size_t(1) << n, xx, extent["xmax"], extent["xmin"]),
+        "y"_nm = hilbert::grid::coordinateToDimension(size_t(1) << n, yy, extent["ymax"], extent["ymin"])
     };
 }
 
@@ -65,7 +65,7 @@ data_frame HILBERT_xy_to_coords_(size_t n, integers x, integers y, doubles exten
                    yy(y.begin(), y.end());
 
     return cpp11::writable::data_frame {
-        "x"_nm = hilbert::grid::colsToX(n, xx, extent["xmax"], extent["xmin"]),
-        "y"_nm = hilbert::grid::rowsToY(n, yy, extent["ymax"], extent["ymin"])
+        "x"_nm = hilbert::grid::colsToX(size_t(1) << n, xx, extent["xmax"], extent["xmin"]),
+        "y"_nm = hilbert::grid::rowsToY(size_t(1) << n, yy, extent["ymax"], extent["ymin"])
     };
 }
