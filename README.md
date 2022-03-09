@@ -6,7 +6,8 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of hilbert is to …
+**hilbert** provides utilities for quick indexing/encoding of
+coordinates to a Hilbert Curve.
 
 ## Installation
 
