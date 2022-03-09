@@ -3,9 +3,7 @@
 #define __HILBERT_GRID_H__
 
 #include <cmath>
-#include <cassert>
 #include <algorithm>
-#include <iostream>
 #include "types.hpp"
 
 using std::vector;
