@@ -5,9 +5,9 @@ testthat::test_that("general indexing works", {
 
     for (e in seq_len(15)) {
         n <- 2^e
-        test_xy       <- coords_to_xy(n, x, y, extent)
-        test_index    <- index(n, test_xy$x, test_xy$y)
-        test_position <- position(n, test_index)
+        test_xy       <- HILBERT_coords_to_xy_(n, x, y, extent)
+        test_index    <- index(test_xy$x, test_xy$y, n = n)
+        test_position <- HILBERT_position_(n, test_index)
 
         expect_equal(test_position, test_xy)
     }
@@ -20,8 +20,8 @@ testthat::test_that("lon/lat <--> row/col", {
 
     for (e in 6:30) {
         n <- 2 ^ e
-        test_xy     <- coords_to_xy(n, x, y, extent)
-        test_coords <- xy_to_coords(n, test_xy$x, test_xy$y, extent)
+        test_xy     <- HILBERT_coords_to_xy_(n, x, y, extent)
+        test_coords <- HILBERT_xy_to_coords_(n, test_xy$x, test_xy$y, extent)
 
         expect_equal(
             test_coords,

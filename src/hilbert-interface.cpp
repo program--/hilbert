@@ -8,7 +8,7 @@ using cpp11::data_frame;
 using cpp11::literals::operator""_nm;
 
 [[cpp11::register]]
-integers index(size_t n, integers x, integers y)
+integers HILBERT_index_(size_t n, integers x, integers y)
 {   
     size_t len = x.size();
     vector<size_t> xx(x.begin(), x.end()),
@@ -27,7 +27,7 @@ integers index(size_t n, integers x, integers y)
 }
 
 [[cpp11::register]]
-data_frame position(size_t n, integers h)
+data_frame HILBERT_position_(size_t n, integers h)
 {
     size_t len = h.size();
     vector<size_t> hh(h.begin(), h.end()), x(len), y(len);
@@ -47,7 +47,7 @@ data_frame position(size_t n, integers h)
 }
 
 [[cpp11::register]]
-data_frame coords_to_xy(size_t n, doubles x, doubles y, doubles extent)
+data_frame HILBERT_coords_to_xy_(size_t n, doubles x, doubles y, doubles extent)
 {
     vector<double> xx(x.begin(), x.end()),
                    yy(y.begin(), y.end());
@@ -59,7 +59,7 @@ data_frame coords_to_xy(size_t n, doubles x, doubles y, doubles extent)
 }
 
 [[cpp11::register]]
-data_frame xy_to_coords(size_t n, integers x, integers y, doubles extent)
+data_frame HILBERT_xy_to_coords_(size_t n, integers x, integers y, doubles extent)
 {
     vector<size_t> xx(x.begin(), x.end()),
                    yy(y.begin(), y.end());

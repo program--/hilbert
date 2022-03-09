@@ -6,40 +6,40 @@
 #include <R_ext/Visibility.h>
 
 // hilbert-interface.cpp
-integers index(size_t n, integers x, integers y);
-extern "C" SEXP _hilbert_index(SEXP n, SEXP x, SEXP y) {
+integers HILBERT_index_(size_t n, integers x, integers y);
+extern "C" SEXP _hilbert_HILBERT_index_(SEXP n, SEXP x, SEXP y) {
   BEGIN_CPP11
-    return cpp11::as_sexp(index(cpp11::as_cpp<cpp11::decay_t<size_t>>(n), cpp11::as_cpp<cpp11::decay_t<integers>>(x), cpp11::as_cpp<cpp11::decay_t<integers>>(y)));
+    return cpp11::as_sexp(HILBERT_index_(cpp11::as_cpp<cpp11::decay_t<size_t>>(n), cpp11::as_cpp<cpp11::decay_t<integers>>(x), cpp11::as_cpp<cpp11::decay_t<integers>>(y)));
   END_CPP11
 }
 // hilbert-interface.cpp
-data_frame position(size_t n, integers h);
-extern "C" SEXP _hilbert_position(SEXP n, SEXP h) {
+data_frame HILBERT_position_(size_t n, integers h);
+extern "C" SEXP _hilbert_HILBERT_position_(SEXP n, SEXP h) {
   BEGIN_CPP11
-    return cpp11::as_sexp(position(cpp11::as_cpp<cpp11::decay_t<size_t>>(n), cpp11::as_cpp<cpp11::decay_t<integers>>(h)));
+    return cpp11::as_sexp(HILBERT_position_(cpp11::as_cpp<cpp11::decay_t<size_t>>(n), cpp11::as_cpp<cpp11::decay_t<integers>>(h)));
   END_CPP11
 }
 // hilbert-interface.cpp
-data_frame coords_to_xy(size_t n, doubles x, doubles y, doubles extent);
-extern "C" SEXP _hilbert_coords_to_xy(SEXP n, SEXP x, SEXP y, SEXP extent) {
+data_frame HILBERT_coords_to_xy_(size_t n, doubles x, doubles y, doubles extent);
+extern "C" SEXP _hilbert_HILBERT_coords_to_xy_(SEXP n, SEXP x, SEXP y, SEXP extent) {
   BEGIN_CPP11
-    return cpp11::as_sexp(coords_to_xy(cpp11::as_cpp<cpp11::decay_t<size_t>>(n), cpp11::as_cpp<cpp11::decay_t<doubles>>(x), cpp11::as_cpp<cpp11::decay_t<doubles>>(y), cpp11::as_cpp<cpp11::decay_t<doubles>>(extent)));
+    return cpp11::as_sexp(HILBERT_coords_to_xy_(cpp11::as_cpp<cpp11::decay_t<size_t>>(n), cpp11::as_cpp<cpp11::decay_t<doubles>>(x), cpp11::as_cpp<cpp11::decay_t<doubles>>(y), cpp11::as_cpp<cpp11::decay_t<doubles>>(extent)));
   END_CPP11
 }
 // hilbert-interface.cpp
-data_frame xy_to_coords(size_t n, integers x, integers y, doubles extent);
-extern "C" SEXP _hilbert_xy_to_coords(SEXP n, SEXP x, SEXP y, SEXP extent) {
+data_frame HILBERT_xy_to_coords_(size_t n, integers x, integers y, doubles extent);
+extern "C" SEXP _hilbert_HILBERT_xy_to_coords_(SEXP n, SEXP x, SEXP y, SEXP extent) {
   BEGIN_CPP11
-    return cpp11::as_sexp(xy_to_coords(cpp11::as_cpp<cpp11::decay_t<size_t>>(n), cpp11::as_cpp<cpp11::decay_t<integers>>(x), cpp11::as_cpp<cpp11::decay_t<integers>>(y), cpp11::as_cpp<cpp11::decay_t<doubles>>(extent)));
+    return cpp11::as_sexp(HILBERT_xy_to_coords_(cpp11::as_cpp<cpp11::decay_t<size_t>>(n), cpp11::as_cpp<cpp11::decay_t<integers>>(x), cpp11::as_cpp<cpp11::decay_t<integers>>(y), cpp11::as_cpp<cpp11::decay_t<doubles>>(extent)));
   END_CPP11
 }
 
 extern "C" {
 static const R_CallMethodDef CallEntries[] = {
-    {"_hilbert_coords_to_xy", (DL_FUNC) &_hilbert_coords_to_xy, 4},
-    {"_hilbert_index",        (DL_FUNC) &_hilbert_index,        3},
-    {"_hilbert_position",     (DL_FUNC) &_hilbert_position,     2},
-    {"_hilbert_xy_to_coords", (DL_FUNC) &_hilbert_xy_to_coords, 4},
+    {"_hilbert_HILBERT_coords_to_xy_", (DL_FUNC) &_hilbert_HILBERT_coords_to_xy_, 4},
+    {"_hilbert_HILBERT_index_",        (DL_FUNC) &_hilbert_HILBERT_index_,        3},
+    {"_hilbert_HILBERT_position_",     (DL_FUNC) &_hilbert_HILBERT_position_,     2},
+    {"_hilbert_HILBERT_xy_to_coords_", (DL_FUNC) &_hilbert_HILBERT_xy_to_coords_, 4},
     {NULL, NULL, 0}
 };
 }
