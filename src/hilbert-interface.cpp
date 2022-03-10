@@ -10,10 +10,9 @@ using cpp11::literals::operator""_nm;
 [[cpp11::register]]
 integers HILBERT_index_(size_t n, integers x, integers y)
 {   
-    size_t len = x.size();
-    vector<size_t> xx(x.begin(), x.end()),
-                   yy(y.begin(), y.end()),
-                   h(len);
+    const size_t len = x.size();
+    const vector<size_t> xx(x.begin(), x.end()), yy(y.begin(), y.end());
+    vector<size_t> h(len);
 
     for (size_t i = 0; i < len; ++i) {
         if (i % 8130 == 0) {
@@ -29,8 +28,9 @@ integers HILBERT_index_(size_t n, integers x, integers y)
 [[cpp11::register]]
 data_frame HILBERT_position_(size_t n, integers h)
 {
-    size_t len = h.size();
-    vector<size_t> hh(h.begin(), h.end()), x(len), y(len);
+    const size_t len = h.size();
+    const vector<size_t> hh(h.begin(), h.end());
+    vector<size_t> x(len), y(len);
 
     for (size_t i = 0; i < len; ++i) {
         if (i % 8130 == 0) {
@@ -49,8 +49,8 @@ data_frame HILBERT_position_(size_t n, integers h)
 [[cpp11::register]]
 data_frame HILBERT_coords_to_xy_(size_t n, doubles x, doubles y, doubles extent)
 {
-    vector<double> xx(x.begin(), x.end()),
-                   yy(y.begin(), y.end());
+    const vector<double> xx(x.begin(), x.end()),
+                         yy(y.begin(), y.end());
 
     return cpp11::writable::data_frame {
         "x"_nm = hilbert::grid::coordinateToDimension(size_t(1) << n, xx, extent["xmax"], extent["xmin"]),

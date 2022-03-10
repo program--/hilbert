@@ -33,10 +33,18 @@ extern "C" SEXP _hilbert_HILBERT_xy_to_coords_(SEXP n, SEXP x, SEXP y, SEXP exte
     return cpp11::as_sexp(HILBERT_xy_to_coords_(cpp11::as_cpp<cpp11::decay_t<size_t>>(n), cpp11::as_cpp<cpp11::decay_t<integers>>(x), cpp11::as_cpp<cpp11::decay_t<integers>>(y), cpp11::as_cpp<cpp11::decay_t<doubles>>(extent)));
   END_CPP11
 }
+// hilbert-interface64.cpp
+strings HILBERT_index64_(size_t n, integers x, integers y);
+extern "C" SEXP _hilbert_HILBERT_index64_(SEXP n, SEXP x, SEXP y) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(HILBERT_index64_(cpp11::as_cpp<cpp11::decay_t<size_t>>(n), cpp11::as_cpp<cpp11::decay_t<integers>>(x), cpp11::as_cpp<cpp11::decay_t<integers>>(y)));
+  END_CPP11
+}
 
 extern "C" {
 static const R_CallMethodDef CallEntries[] = {
     {"_hilbert_HILBERT_coords_to_xy_", (DL_FUNC) &_hilbert_HILBERT_coords_to_xy_, 4},
+    {"_hilbert_HILBERT_index64_",      (DL_FUNC) &_hilbert_HILBERT_index64_,      3},
     {"_hilbert_HILBERT_index_",        (DL_FUNC) &_hilbert_HILBERT_index_,        3},
     {"_hilbert_HILBERT_position_",     (DL_FUNC) &_hilbert_HILBERT_position_,     2},
     {"_hilbert_HILBERT_xy_to_coords_", (DL_FUNC) &_hilbert_HILBERT_xy_to_coords_, 4},

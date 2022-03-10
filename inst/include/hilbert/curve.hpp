@@ -31,10 +31,10 @@ inline void rotate(T n, T *x, T *y, T rx, T ry)
 template <typename T>
 inline void positionToIndex(T n, T x, T y, T *h)
 {
-    T rx, ry, s, d = 0;
-    for (s = n / 2; s > 0; s /= 2) {
-        rx = (x & s) > 0;
-        ry = (y & s) > 0;
+    T d = 0;
+    for (T s = n / 2; s > 0; s /= 2) {
+        T rx = (x & s) > 0;
+        T ry = (y & s) > 0;
         d += s * s * ((3 * rx) ^ ry);
         rotate(n, &x, &y, rx, ry);
     }
@@ -46,11 +46,11 @@ inline void positionToIndex(T n, T x, T y, T *h)
 template <typename T>
 inline void indexToPosition(T n, T h, T *x, T *y)
 {
-    T rx, ry, s, t = h;
+    T t = h;
     *x = *y = 0;
-    for (s = 1; s < n; s *= 2) {
-        rx = 1 & (t / 2);
-        ry = 1 & (t ^ rx);
+    for (T s = 1; s < n; s *= 2) {
+        T rx = 1 & (t / 2);
+        T ry = 1 & (t ^ rx);
         rotate(s, x, y, rx, ry);
         *x += s * rx;
         *y += s * ry;
