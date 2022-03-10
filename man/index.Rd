@@ -7,19 +7,37 @@
 \alias{index.double}
 \alias{index.integer}
 \alias{index.numeric}
+\alias{index64}
+\alias{index64.data.frame}
+\alias{index64.matrix}
+\alias{index64.double}
+\alias{index64.integer}
+\alias{index64.numeric}
 \title{Index positions to a Hilbert Curve}
 \usage{
 index(x, ..., n = 10L)
 
-\method{index}{data.frame}(x, ..., coords = c(1, 2), n = 10L, attach = TRUE)
+\method{index}{data.frame}(x, ..., n, coords = c(1, 2), attach = TRUE)
 
-\method{index}{matrix}(x, ..., coords = c(1, 2), n = 10L, attach = TRUE)
+\method{index}{matrix}(x, ..., n, coords = c(1, 2), attach = TRUE)
 
-\method{index}{double}(x, y, ..., n = 10L)
+\method{index}{double}(x, y, ..., n)
 
-\method{index}{integer}(x, y, ..., n = 10L)
+\method{index}{integer}(x, y, ..., n)
 
-\method{index}{numeric}(x, y, ..., n = 10L)
+\method{index}{numeric}(x, y, ..., n)
+
+index64(x, ..., n = 10L)
+
+\method{index64}{data.frame}(x, ..., n, coords = c(1, 2), attach = TRUE)
+
+\method{index64}{matrix}(x, ..., n, coords = c(1, 2), attach = TRUE)
+
+\method{index64}{double}(x, y, ..., n)
+
+\method{index64}{integer}(x, y, ..., n)
+
+\method{index64}{numeric}(x, y, ..., n)
 }
 \arguments{
 \item{x}{One of: Numeric vector, \code{data.frame}, or \code{matrix}.

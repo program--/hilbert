@@ -15,3 +15,7 @@ HILBERT_coords_to_xy_ <- function(n, x, y, extent) {
 HILBERT_xy_to_coords_ <- function(n, x, y, extent) {
   .Call(`_hilbert_HILBERT_xy_to_coords_`, n, x, y, extent)
 }
+
+HILBERT_index64_ <- function(n, x, y) {
+  .Call(`_hilbert_HILBERT_index64_`, n, x, y)
+}
