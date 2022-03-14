@@ -5,14 +5,17 @@
 \alias{index.data.frame}
 \alias{index.matrix}
 \alias{index.double}
-\alias{index.integer}
 \alias{index.numeric}
+\alias{index.integer}
 \alias{index64}
 \alias{index64.data.frame}
 \alias{index64.matrix}
 \alias{index64.double}
 \alias{index64.integer}
 \alias{index64.numeric}
+\alias{index64.integer64}
+\alias{index64.character}
+\alias{index64.bitstring}
 \title{Index positions to a Hilbert Curve}
 \usage{
 index(x, ..., n = 10L)
@@ -23,9 +26,9 @@ index(x, ..., n = 10L)
 
 \method{index}{double}(x, y, ..., n)
 
-\method{index}{integer}(x, y, ..., n)
-
 \method{index}{numeric}(x, y, ..., n)
+
+\method{index}{integer}(x, y, ..., n)
 
 index64(x, ..., n = 10L)
 
@@ -38,6 +41,12 @@ index64(x, ..., n = 10L)
 \method{index64}{integer}(x, y, ..., n)
 
 \method{index64}{numeric}(x, y, ..., n)
+
+\method{index64}{integer64}(x, y, ..., n)
+
+\method{index64}{character}(x, y, ..., n)
+
+\method{index64}{bitstring}(x, y, ..., n)
 }
 \arguments{
 \item{x}{One of: Numeric vector, \code{data.frame}, or \code{matrix}.

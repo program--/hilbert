@@ -38,10 +38,13 @@ index <- function(x, ..., n = 10L) {
 #' @rdname index
 #' @export
 index.data.frame <- function(x, ..., n, coords = c(1, 2), attach = TRUE) {
-    indices <- HILBERT_index_(n, x[[coords[1]]], x[[coords[2]]])
+    xx      <- x[[coords[1]]]
+    yy      <- x[[coords[2]]]
+    .Class  <- class(xx)
+    indices <- NextMethod("index", x = xx, y = yy, ..., n = n)
 
     if (attach) {
-        x$h <- indices
+        x[["h"]] <- indices
         return(x)
     }
 
@@ -51,7 +54,10 @@ index.data.frame <- function(x, ..., n, coords = c(1, 2), attach = TRUE) {
 #' @rdname index
 #' @export
 index.matrix <- function(x, ..., n, coords = c(1, 2), attach = TRUE) {
-    indices <- HILBERT_index_(n, x[[coords[1]]], x[[coords[2]]])
+    xx      <- x[[coords[1]]]
+    yy      <- x[[coords[2]]]
+    .Class  <- class(xx)
+    indices <- NextMethod("index", x = xx, y = yy, ..., n = n)
 
     if (attach) {
         x[[ncol(x) + 1]] <- indices
@@ -64,19 +70,21 @@ index.matrix <- function(x, ..., n, coords = c(1, 2), attach = TRUE) {
 #' @rdname index
 #' @export
 index.double <- function(x, y, ..., n) {
-    HILBERT_index_(n, as.integer(x), as.integer(y))
+    .Class <- "integer"
+    NextMethod("index", x = as.integer(x), y = as.integer(y), ..., n = n)
+}
+
+#' @rdname index
+#' @export
+index.numeric <- function(x, y, ..., n) {
+    .Class <- "integer"
+    NextMethod("index", x = as.integer(x), y = as.integer(y), ..., n = n)
 }
 
 #' @rdname index
 #' @export
 index.integer <- function(x, y, ..., n) {
     HILBERT_index_(n, x, y)
-}
-
-#' @rdname index
-#' @export
-index.numeric <- function(x, y, ..., n) {
-    HILBERT_index_(n, as.integer(x), as.integer(y))
 }
 
 #' @rdname index
@@ -88,12 +96,13 @@ index64 <- function(x, ..., n = 10L) {
 #' @rdname index
 #' @export
 index64.data.frame <- function(x, ..., n, coords = c(1, 2), attach = TRUE) {
-    indices <- bit64::as.integer64(
-        HILBERT_index64_(n, x[[coords[1]]], x[[coords[2]]])
-    )
+    xx      <- x[[coords[1]]]
+    yy      <- x[[coords[2]]]
+    .Class  <- class(xx)
+    indices <- NextMethod("index64", x = xx, y = yy, ..., n = n)
 
     if (attach) {
-        x$h <- indices
+        x[["h"]] <- indices
         return(x)
     }
 
@@ -103,9 +112,10 @@ index64.data.frame <- function(x, ..., n, coords = c(1, 2), attach = TRUE) {
 #' @rdname index
 #' @export
 index64.matrix <- function(x, ..., n, coords = c(1, 2), attach = TRUE) {
-    indices <- bit64::as.integer64(
-        HILBERT_index64_(n, x[[coords[1]]], x[[coords[2]]])
-    )
+    xx      <- x[[coords[1]]]
+    yy      <- x[[coords[2]]]
+    .Class  <- class(xx)
+    indices <- NextMethod("index64", x = xx, y = yy, ..., n = n)
 
     if (attach) {
         x[[ncol(x) + 1]] <- indices
@@ -118,20 +128,49 @@ index64.matrix <- function(x, ..., n, coords = c(1, 2), attach = TRUE) {
 #' @rdname index
 #' @export
 index64.double <- function(x, y, ..., n) {
-    bit <- HILBERT_index64_(n, as.integer(x), as.integer(y))
-    bit64::as.integer64(bit)
+    x      <- bit64::as.integer64(x)
+    y      <- bit64::as.integer64(y)
+    .Class <- "integer64"
+    NextMethod("index64", x = x, y = y, ..., n = n)
 }
 
 #' @rdname index
 #' @export
 index64.integer <- function(x, y, ..., n) {
-    bit <- HILBERT_index64_(x, y, n = n)
-    bit64::as.integer64(bit)
+    x      <- bit64::as.integer64(x)
+    y      <- bit64::as.integer64(y)
+    .Class <- "integer64"
+    NextMethod("index64", x = x, y = y, ..., n = n)
 }
 
 #' @rdname index
 #' @export
 index64.numeric <- function(x, y, ..., n) {
-    bit <- HILBERT_index64_(x, y, n = n)
+    x      <- bit64::as.integer64(x)
+    y      <- bit64::as.integer64(y)
+    .Class <- "integer64"
+    NextMethod("index64", x = x, y = y, ..., n = n)
+}
+
+#' @rdname index
+#' @export
+index64.integer64 <- function(x, y, ..., n) {
+    x      <- bit64::as.bitstring(x)
+    y      <- bit64::as.bitstring(y)
+    .Class <- "bitstring"
+    NextMethod("index64", x = x, y = y, ..., n = n)
+}
+
+#' @rdname index
+#' @export
+index64.character <- function(x, y, ..., n) {
+    .Class <- class(x) <- class(y) <- "bitstring"
+    NextMethod("index64", x = x, y = y, n = n)
+}
+
+#' @rdname index
+#' @export
+index64.bitstring <- function(x, y, ..., n) {
+    bit <- HILBERT_index64_(n, x, y)
     bit64::as.integer64(bit)
 }

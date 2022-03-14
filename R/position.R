@@ -19,17 +19,26 @@
 #' @rdname position
 #' @export
 position <- function(h, ..., n = 10L) {
-    UseMethod("position")
+    if (n < 16L) {
+        UseMethod("position")
+    } else {
+        if (!requireNamespace("bit64", quietly = TRUE)) {
+            stop("`bit64` is required to use exponents greater than 15.")
+        }
+
+        UseMethod("position64")
+    }
 }
 
 #' @rdname position
 #' @export
-position.data.frame <- function(h, ..., idx = 1, n = 10L, attach = TRUE) {
-    positions <- HILBERT_position_(n, h[[idx[1]]])
+position.data.frame <- function(h, ..., n, idx = 1, attach = TRUE) {
+    .Class    <- class(h[[idx[1]]])
+    positions <- NextMethod("position", h = h[[idx[1]]], ..., n = n)
 
     if (attach) {
-        h$x <- positions$x
-        h$y <- positions$y
+        h[["x"]] <- positions[[1]]
+        h[["y"]] <- positions[[2]]
         return(h)
     }
 
@@ -38,12 +47,13 @@ position.data.frame <- function(h, ..., idx = 1, n = 10L, attach = TRUE) {
 
 #' @rdname position
 #' @export
-position.matrix <- function(h, ..., idx = 1, n = 10L, attach = TRUE) {
-    positions <- HILBERT_position_(n, h[[idx[1]]])
+position.matrix <- function(h, ..., n, idx = 1, attach = TRUE) {
+    .Class    <- class(h[[idx[1]]])
+    positions <- NextMethod("position", h = h[[idx[1]]], ..., n = n)
 
     if (attach) {
-        h[[ncol(h) + 1]] <- positions$x
-        h[[ncol(h) + 1]] <- positions$y
+        h[[ncol(h) + 1]] <- positions[[1]]
+        h[[ncol(h) + 1]] <- positions[[2]]
         return(h)
     }
 
@@ -52,14 +62,98 @@ position.matrix <- function(h, ..., idx = 1, n = 10L, attach = TRUE) {
 
 #' @rdname position
 #' @export
-position.numeric <- function(h, ..., n = 10L) {
-    h <- as.integer(h)
-    NextMethod("position", h, ..., n = n)
+position.numeric <- function(h, ..., n) {
+    .Class <- "integer"
+    NextMethod("position", h = as.integer(h), ..., n = n)
 }
 
 
 #' @rdname position
 #' @export
-position.integer <- function(h, ..., n = 10L) {
+position.integer <- function(h, ..., n) {
     HILBERT_position_(n, h)
+}
+
+#' @rdname position
+#' @export
+position64 <- function(h, ..., n = 10L) {
+    UseMethod("position64")
+}
+
+#' @rdname position
+#' @export
+position64.data.frame <- function(h, ..., n, idx = 1, attach = TRUE) {
+    .Class    <- class(h[[idx[1]]])
+    positions <- NextMethod("position64", h = h[[idx[1]]], ..., n = n)
+
+    if (attach) {
+        h[["x"]] <- positions[[1]]
+        h[["y"]] <- positions[[2]]
+        return(h)
+    }
+
+    positions
+}
+
+#' @rdname position
+#' @export
+position64.matrix <- function(h, ..., n, idx = 1, attach = TRUE) {
+    .Class    <- class(h[[idx[1]]])
+    positions <- NextMethod("position64", h = h[[idx[1]]], ..., n = n)
+
+    if (attach) {
+        h[[ncol(h) + 1]] <- positions[[1]]
+        h[[ncol(h) + 1]] <- positions[[2]]
+        return(h)
+    }
+
+    positions
+}
+
+#' @rdname position
+#' @export
+position64.double <- function(h, ..., n) {
+    h      <- bit64::as.integer64(h)
+    .Class <- "integer64"
+    NextMethod("position64", h = h, ..., n = n)
+}
+
+#' @rdname position
+#' @export
+position64.integer <- function(h, ..., n) {
+    h      <- bit64::as.integer64(h)
+    .Class <- "integer64"
+    NextMethod("position64", h = h, ..., n = n)
+}
+
+#' @rdname position
+#' @export
+position64.numeric <- function(h, ..., n) {
+    h      <- bit64::as.integer64(h)
+    .Class <- "integer64"
+    NextMethod("position64", h = h, ..., n = n)
+}
+
+#' @rdname position
+#' @export
+position64.integer64 <- function(h, ..., n) {
+    h      <- bit64::as.bitstring(h)
+    .Class <- "bitstring"
+    NextMethod("position64", h = h, ..., n = n)
+}
+
+#' @rdname position
+#' @export
+position64.character <- function(h, ..., n) {
+    .Class <- class(h) <- "bitstring"
+    NextMethod("position64", h = h, ..., n = n)
+}
+
+#' @rdname position
+#' @export
+position64.bitstring <- function(h, ..., n) {
+    pos      <- HILBERT_position64_(n, h)
+    pos[[1]] <- bit64::as.integer64(pos[[1]])
+    pos[[2]] <- bit64::as.integer64(pos[[2]])
+    pos
 }

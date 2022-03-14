@@ -73,7 +73,7 @@ new_xy
 -   [x] General indexing/retrieval
 -   [ ] 64-bit Integer Support (via `bit64`)
     -   [x] `index()`
-    -   [ ] `position()`
+    -   [x] `position()`
     -   [ ] `coords_to_position()`
     -   [ ] `position_to_coords()`
 -   [ ] Multiprecision Integer Support (via `bignum`)

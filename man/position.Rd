@@ -6,17 +6,44 @@
 \alias{position.matrix}
 \alias{position.numeric}
 \alias{position.integer}
+\alias{position64}
+\alias{position64.data.frame}
+\alias{position64.matrix}
+\alias{position64.double}
+\alias{position64.integer}
+\alias{position64.numeric}
+\alias{position64.integer64}
+\alias{position64.character}
+\alias{position64.bitstring}
 \title{Get index positions from a Hilbert Curve}
 \usage{
 position(h, ..., n = 10L)
 
-\method{position}{data.frame}(h, ..., idx = 1, n = 10L, attach = TRUE)
+\method{position}{data.frame}(h, ..., n, idx = 1, attach = TRUE)
 
-\method{position}{matrix}(h, ..., idx = 1, n = 10L, attach = TRUE)
+\method{position}{matrix}(h, ..., n, idx = 1, attach = TRUE)
 
-\method{position}{numeric}(h, ..., n = 10L)
+\method{position}{numeric}(h, ..., n)
 
-\method{position}{integer}(h, ..., n = 10L)
+\method{position}{integer}(h, ..., n)
+
+position64(h, ..., n = 10L)
+
+\method{position64}{data.frame}(h, ..., n, idx = 1, attach = TRUE)
+
+\method{position64}{matrix}(h, ..., n, idx = 1, attach = TRUE)
+
+\method{position64}{double}(h, ..., n)
+
+\method{position64}{integer}(h, ..., n)
+
+\method{position64}{numeric}(h, ..., n)
+
+\method{position64}{integer64}(h, ..., n)
+
+\method{position64}{character}(h, ..., n)
+
+\method{position64}{bitstring}(h, ..., n)
 }
 \arguments{
 \item{h}{One of: Integer vector, \code{data.frame}, or \code{matrix}.}
