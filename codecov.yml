@@ -1,5 +1,9 @@
 comment: false
 
+ignore:
+  - "inst/include/cpp11.hpp"
+  - "inst/include/cpp11/**/*"
+
 coverage:
   status:
     project:
