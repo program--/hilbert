@@ -23,3 +23,11 @@ HILBERT_index64_ <- function(n, x, y) {
 HILBERT_position64_ <- function(n, h) {
   .Call(`_hilbert_HILBERT_position64_`, n, h)
 }
+
+HILBERT_coords_to_xy_64_ <- function(n, x, y, extent) {
+  .Call(`_hilbert_HILBERT_coords_to_xy_64_`, n, x, y, extent)
+}
+
+HILBERT_xy_to_coords_64_ <- function(n, x, y, extent) {
+  .Call(`_hilbert_HILBERT_xy_to_coords_64_`, n, x, y, extent)
+}

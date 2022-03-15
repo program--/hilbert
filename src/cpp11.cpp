@@ -47,15 +47,31 @@ extern "C" SEXP _hilbert_HILBERT_position64_(SEXP n, SEXP h) {
     return cpp11::as_sexp(HILBERT_position64_(cpp11::as_cpp<cpp11::decay_t<size_t>>(n), cpp11::as_cpp<cpp11::decay_t<strings>>(h)));
   END_CPP11
 }
+// hilbert-interface64.cpp
+data_frame HILBERT_coords_to_xy_64_(size_t n, doubles x, doubles y, doubles extent);
+extern "C" SEXP _hilbert_HILBERT_coords_to_xy_64_(SEXP n, SEXP x, SEXP y, SEXP extent) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(HILBERT_coords_to_xy_64_(cpp11::as_cpp<cpp11::decay_t<size_t>>(n), cpp11::as_cpp<cpp11::decay_t<doubles>>(x), cpp11::as_cpp<cpp11::decay_t<doubles>>(y), cpp11::as_cpp<cpp11::decay_t<doubles>>(extent)));
+  END_CPP11
+}
+// hilbert-interface64.cpp
+data_frame HILBERT_xy_to_coords_64_(size_t n, strings x, strings y, doubles extent);
+extern "C" SEXP _hilbert_HILBERT_xy_to_coords_64_(SEXP n, SEXP x, SEXP y, SEXP extent) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(HILBERT_xy_to_coords_64_(cpp11::as_cpp<cpp11::decay_t<size_t>>(n), cpp11::as_cpp<cpp11::decay_t<strings>>(x), cpp11::as_cpp<cpp11::decay_t<strings>>(y), cpp11::as_cpp<cpp11::decay_t<doubles>>(extent)));
+  END_CPP11
+}
 
 extern "C" {
 static const R_CallMethodDef CallEntries[] = {
-    {"_hilbert_HILBERT_coords_to_xy_", (DL_FUNC) &_hilbert_HILBERT_coords_to_xy_, 4},
-    {"_hilbert_HILBERT_index64_",      (DL_FUNC) &_hilbert_HILBERT_index64_,      3},
-    {"_hilbert_HILBERT_index_",        (DL_FUNC) &_hilbert_HILBERT_index_,        3},
-    {"_hilbert_HILBERT_position64_",   (DL_FUNC) &_hilbert_HILBERT_position64_,   2},
-    {"_hilbert_HILBERT_position_",     (DL_FUNC) &_hilbert_HILBERT_position_,     2},
-    {"_hilbert_HILBERT_xy_to_coords_", (DL_FUNC) &_hilbert_HILBERT_xy_to_coords_, 4},
+    {"_hilbert_HILBERT_coords_to_xy_",    (DL_FUNC) &_hilbert_HILBERT_coords_to_xy_,    4},
+    {"_hilbert_HILBERT_coords_to_xy_64_", (DL_FUNC) &_hilbert_HILBERT_coords_to_xy_64_, 4},
+    {"_hilbert_HILBERT_index64_",         (DL_FUNC) &_hilbert_HILBERT_index64_,         3},
+    {"_hilbert_HILBERT_index_",           (DL_FUNC) &_hilbert_HILBERT_index_,           3},
+    {"_hilbert_HILBERT_position64_",      (DL_FUNC) &_hilbert_HILBERT_position64_,      2},
+    {"_hilbert_HILBERT_position_",        (DL_FUNC) &_hilbert_HILBERT_position_,        2},
+    {"_hilbert_HILBERT_xy_to_coords_",    (DL_FUNC) &_hilbert_HILBERT_xy_to_coords_,    4},
+    {"_hilbert_HILBERT_xy_to_coords_64_", (DL_FUNC) &_hilbert_HILBERT_xy_to_coords_64_, 4},
     {NULL, NULL, 0}
 };
 }

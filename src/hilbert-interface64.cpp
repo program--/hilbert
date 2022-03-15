@@ -2,9 +2,11 @@
 #include <cstring>
 #include <bitset>
 #include "hilbert.hpp"
+#include "hilbert/grid.hpp"
 
 using std::vector;
 using cpp11::integers;
+using cpp11::doubles;
 using cpp11::strings;
 using cpp11::data_frame;
 using cpp11::literals::operator""_nm;
@@ -12,7 +14,6 @@ using cpp11::literals::operator""_nm;
 [[cpp11::register]]
 strings HILBERT_index64_(size_t n, strings x, strings y) 
 {
-    const int64_t nn = static_cast<int64_t>(n);
     const size_t len = x.size();
     vector<int64_t> h(len);
 
@@ -22,7 +23,7 @@ strings HILBERT_index64_(size_t n, strings x, strings y)
         }
         
         hilbert::curve::positionToIndex(
-            int64_t(1) << nn,
+            int64_t(1) << n,
             static_cast<int64_t>(std::stoll(x[i], nullptr, 2)),
             static_cast<int64_t>(std::stoll(y[i], nullptr, 2)),
             &h[i]
@@ -41,12 +42,11 @@ strings HILBERT_index64_(size_t n, strings x, strings y)
 [[cpp11::register]]
 data_frame HILBERT_position64_(size_t n, strings h)
 {
-    const int64_t nn = static_cast<int64_t>(n);
     const size_t len = h.size();
     vector<int64_t> x(len), y(len);
     for (size_t i = 0; i < len; ++i) {
         hilbert::curve::indexToPosition(
-            int64_t(1) << nn,
+            int64_t(1) << n,
             static_cast<int64_t>(std::stoll(h[i], nullptr, 2)),
             &x[i],
             &y[i]
@@ -65,5 +65,46 @@ data_frame HILBERT_position64_(size_t n, strings h)
     return cpp11::writable::data_frame{
         "x"_nm = x,
         "y"_nm = y
+    };
+}
+
+[[cpp11::register]]
+data_frame HILBERT_coords_to_xy_64_(size_t n, doubles x, doubles y, doubles extent) {
+    const vector<double> xx(x.begin(), x.end()),
+                         yy(y.begin(), y.end());
+
+    vector<int64_t> xd = hilbert::grid::coordinateToDimension(int64_t(1) << n, xx, extent["xmax"], extent["xmin"]),
+                    yd = hilbert::grid::coordinateToDimension(int64_t(1) << n, yy, extent["ymax"], extent["ymin"]);
+
+    const size_t len = xd.size();
+
+    cpp11::writable::strings xb(len), yb(len);
+
+    for (size_t i = 0; i < len; ++i) {
+        xb[i] = std::bitset<64>(xd[i]).to_string();
+        yb[i] = std::bitset<64>(yd[i]).to_string();
+    }
+
+    xb.attr("class") = "bitstring";
+    yb.attr("class") = "bitstring";
+
+    return cpp11::writable::data_frame {
+        "x"_nm = xb,
+        "y"_nm = yb
+    };
+}
+
+[[cpp11::register]]
+data_frame HILBERT_xy_to_coords_64_(size_t n, strings x, strings y, doubles extent) {
+    const size_t len = x.size();
+    vector<int64_t> xx(len), yy(len);
+    for (size_t i = 0; i < len; ++i) {
+        xx[i] = static_cast<int64_t>(std::stoll(x[i], nullptr, 2));
+        yy[i] = static_cast<int64_t>(std::stoll(y[i], nullptr, 2));
+    }
+
+    return cpp11::writable::data_frame {
+        "x"_nm = hilbert::grid::colsToX(int64_t(1) << n, xx, extent["xmax"], extent["xmin"]),
+        "y"_nm = hilbert::grid::rowsToY(int64_t(1) << n, yy, extent["ymax"], extent["ymin"])
     };
 }

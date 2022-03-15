@@ -38,7 +38,7 @@ remotes::install_github("program--/hilbert")
 ```{r setup}
 x <- -77.85641
 y <- 34.35935
-n <- 15
+n <- 24 # n > 15 requires `bit64`
 e <- c(xmax = 180, xmin = -180, ymax = 90, ymin = -90)
 ```
 
@@ -69,11 +69,11 @@ new_xy
 ## Roadmap
 
 - [X] General indexing/retrieval
-- [ ] 64-bit Integer Support (via `bit64`)
+- [X] 64-bit Integer Support (via `bit64`)
   + [X] `index()`
   + [X] `position()`
-  + [ ] `coords_to_position()`
-  + [ ] `position_to_coords()`
+  + [X] `coords_to_position()`
+  + [X] `position_to_coords()`
 - [ ] Multiprecision Integer Support (via `bignum`)
   + [ ] `index()`
   + [ ] `position()`

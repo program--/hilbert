@@ -28,7 +28,7 @@ remotes::install_github("program--/hilbert")
 ``` r
 x <- -77.85641
 y <- 34.35935
-n <- 15
+n <- 24 # n > 15 requires `bit64`
 e <- c(xmax = 180, xmin = -180, ymax = 90, ymin = -90)
 ```
 
@@ -37,8 +37,8 @@ e <- c(xmax = 180, xmin = -180, ymax = 90, ymin = -90)
 ``` r
 pos <- hilbert::coords_to_position(x, y, n = n, extent = e)
 pos
-#>       x     y
-#> 1 23469 10128
+#>          x       y
+#> 1 12016978 5186084
 ```
 
 ### Position to Index
@@ -46,8 +46,8 @@ pos
 ``` r
 index <- hilbert::index(pos, coords = c("x", "y"), n = n, attach = TRUE)
 index
-#>       x     y         h
-#> 1 23469 10128 936388435
+#>          x       y               h
+#> 1 12016978 5186084 245468611058974
 ```
 
 ### Index to Position
@@ -55,8 +55,8 @@ index
 ``` r
 new_pos <- hilbert::position(index, idx = "h", n = n, attach = FALSE)
 new_pos
-#>       x     y
-#> 1 23469 10128
+#>          x       y
+#> 1 12016978 5186084
 ```
 
 ### Position to Coordinates
@@ -64,18 +64,18 @@ new_pos
 ``` r
 new_xy <- hilbert::position_to_coords(new_pos, coords = c("x", "y"), extent = e, n = n, attach = TRUE)
 new_xy
-#>         x        y
-#> 1 -77.846 34.36354
+#>           x        y
+#> 1 -77.85639 34.35935
 ```
 
 ## Roadmap
 
 -   [x] General indexing/retrieval
--   [ ] 64-bit Integer Support (via `bit64`)
+-   [x] 64-bit Integer Support (via `bit64`)
     -   [x] `index()`
     -   [x] `position()`
-    -   [ ] `coords_to_position()`
-    -   [ ] `position_to_coords()`
+    -   [x] `coords_to_position()`
+    -   [x] `position_to_coords()`
 -   [ ] Multiprecision Integer Support (via `bignum`)
     -   [ ] `index()`
     -   [ ] `position()`
