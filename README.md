@@ -4,6 +4,14 @@
 # hilbert
 
 <!-- badges: start -->
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version/hilbert)](https://CRAN.R-project.org/package=hilbert)
+[![Codecov test
+coverage](https://codecov.io/gh/program--/hilbert/branch/main/graph/badge.svg)](https://codecov.io/gh/program--/hilbert?branch=main)
+[![R-CMD-check](https://github.com/program--/hilbert/workflows/R-CMD-check/badge.svg)](https://github.com/program--/hilbert/actions)
+[![MIT
+License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 <!-- badges: end -->
 
 **hilbert** provides utilities for quick indexing/encoding of
