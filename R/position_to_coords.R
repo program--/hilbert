@@ -120,6 +120,8 @@ position_to_coords.integer <- function(x, y, ..., n, extent) {
     HILBERT_xy_to_coords_(n, x, y, extent)
 }
 
+#' @rdname position_to_coords
+#' @export
 position_to_coords64 <- function(x, ..., n = 10L, extent = NULL) {
     UseMethod("position_to_coords64")
 }

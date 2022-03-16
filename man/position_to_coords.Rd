@@ -7,6 +7,7 @@
 \alias{position_to_coords.numeric}
 \alias{position_to_coords.double}
 \alias{position_to_coords.integer}
+\alias{position_to_coords64}
 \alias{position_to_coords64.data.frame}
 \alias{position_to_coords64.matrix}
 \alias{position_to_coords64.numeric}
@@ -26,6 +27,8 @@ position_to_coords(x, ..., n = 10L, extent = NULL)
 \method{position_to_coords}{double}(x, y, ..., n, extent)
 
 \method{position_to_coords}{integer}(x, y, ..., n, extent)
+
+position_to_coords64(x, ..., n = 10L, extent = NULL)
 
 \method{position_to_coords64}{data.frame}(x, ..., n, extent, coords = c(1, 2), attach = TRUE)
 
