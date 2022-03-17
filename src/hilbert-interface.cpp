@@ -1,4 +1,5 @@
 #include <cpp11.hpp>
+#include "cpp11/as.hpp"
 #include "hilbert.hpp"
 
 using std::vector;
@@ -49,12 +50,12 @@ data_frame HILBERT_position_(size_t n, integers h)
 [[cpp11::register]]
 data_frame HILBERT_coords_to_xy_(size_t n, doubles x, doubles y, doubles extent)
 {
-    const vector<double> xx(x.begin(), x.end()),
-                         yy(y.begin(), y.end());
+    vector<double> xx(x.begin(), x.end()),
+                   yy(y.begin(), y.end());
 
     return cpp11::writable::data_frame {
-        "x"_nm = hilbert::grid::coordinateToDimension(size_t(1) << n, xx, extent["xmax"], extent["xmin"]),
-        "y"_nm = hilbert::grid::coordinateToDimension(size_t(1) << n, yy, extent["ymax"], extent["ymin"])
+        "x"_nm = hilbert::grid::xToCol(size_t(1) << n, xx, extent["xmax"], extent["xmin"]),
+        "y"_nm = hilbert::grid::yToRow(size_t(1) << n, yy, extent["ymax"], extent["ymin"])
     };
 }
 

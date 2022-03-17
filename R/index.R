@@ -54,13 +54,13 @@ index.data.frame <- function(x, ..., n, coords = c(1, 2), attach = TRUE) {
 #' @rdname index
 #' @export
 index.matrix <- function(x, ..., n, coords = c(1, 2), attach = TRUE) {
-    xx      <- x[[coords[1]]]
-    yy      <- x[[coords[2]]]
+    xx      <- x[, coords[1]]
+    yy      <- x[, coords[2]]
     .Class  <- class(xx)
     indices <- NextMethod("index", x = xx, y = yy, ..., n = n)
 
     if (attach) {
-        x[[ncol(x) + 1]] <- indices
+        x[, ncol(x) + 1] <- indices
         return(x)
     }
 

@@ -8,7 +8,6 @@
 
 using std::vector;
 using std::trunc;
-using std::minmax_element;
 
 namespace hilbert
 {
@@ -17,38 +16,38 @@ namespace grid
 {
 
 template <typename T, typename S>
-inline hilbert::types::integral_vector<S> coordinateToDimension(S n, vector<T> v, T max, T min) {
-    S size = v.size();
-    vector<S> s(size);
-    T diff = (max - min) / static_cast<T>(n - 1);
+inline hilbert::types::integral_vector<S> xToCol(S n, vector<T>& x, T xmax, T xmin) {
+    S size = x.size();
+    vector<S> s(size, -1);
+    T diff = (xmax - xmin) / static_cast<T>(n - 1);
 
     for (S i = 0; i < size; i++) {
-        s[i] = static_cast<S>(trunc((max - v[i]) / diff));
+        if (x[i] >= xmin && x[i] < xmax) {
+            s[i] = static_cast<S>(trunc((x[i] - xmin) / diff));
+        } else if (x[i] == xmax) {
+            s[i] = n - 1;
+        } else {
+            s[i] = static_cast<S>(-1);
+        }
     }
 
     return s;
 }
 
 template <typename T, typename S>
-inline hilbert::types::integral_vector<S> xToCol(S n, vector<T>& x) {
-    const auto minmax = minmax_element(std::begin(x), std::end(x));
-    return coordinateToDimension(n, x, *minmax.first, *minmax.second);
-}
-
-template <typename T, typename S>
-inline hilbert::types::integral_vector<S> yToRow(S n, vector<T>& y) {
-    const auto minmax = minmax_element(std::begin(y), std::end(y));
-    return coordinateToDimension(n, y, *minmax.first, *minmax.second);
-}
-
-template <typename T, typename S>
-inline hilbert::types::numeric_vector<T> dimensionToCoordinate(S n, vector<S>& v, T max, T min) {
-    S size = v.size();
-    vector<T> s(size);
-    T diff = (max - min) / static_cast<T>(n - 1);
+inline hilbert::types::integral_vector<S> yToRow(S n, vector<T>& y, T ymax, T ymin) {
+    S size = y.size();
+    vector<S> s(size, -1);
+    T diff = (ymax - ymin) / static_cast<T>(n - 1);
 
     for (S i = 0; i < size; i++) {
-        s[i] = static_cast<T>(max - (v[i] * diff));
+        if (y[i] > ymin && y[i] <= ymax) {
+            s[i] = static_cast<S>(trunc((ymax - y[i]) / diff));
+        } else if (y[i] == ymin) {
+            s[i] = n - 1;
+        } else {
+            s[i] = static_cast<S>(-1);
+        }
     }
 
     return s;
@@ -56,12 +55,28 @@ inline hilbert::types::numeric_vector<T> dimensionToCoordinate(S n, vector<S>& v
 
 template <typename T, typename S>
 inline hilbert::types::numeric_vector<T> colsToX(S n, vector<S>& cols, T xmax, T xmin) {
-    return dimensionToCoordinate(n, cols, xmax, xmin);
+    S size = cols.size();
+    vector<T> s(size);
+    T diff = (xmax - xmin) / static_cast<T>(n - 1);
+
+    for (S i = 0; i < size; i++) {
+        s[i] = static_cast<T>(xmin + ((cols[i]+0.5) * diff));
+    }
+
+    return s;
 }
 
 template <typename T, typename S>
 inline hilbert::types::numeric_vector<T> rowsToY(S n, vector<S>& rows, T ymax, T ymin) {
-    return dimensionToCoordinate(n, rows, ymax, ymin);
+    S size = rows.size();
+    vector<T> s(size);
+    T diff = (ymax - ymin) / static_cast<T>(n - 1);
+
+    for (S i = 0; i < size; i++) {
+        s[i] = static_cast<T>(ymax - ((rows[i]+0.5) * diff));
+    }
+
+    return s;
 }
 
 } // namespace grid

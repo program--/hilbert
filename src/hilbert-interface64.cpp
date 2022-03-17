@@ -70,11 +70,11 @@ data_frame HILBERT_position64_(size_t n, strings h)
 
 [[cpp11::register]]
 data_frame HILBERT_coords_to_xy_64_(size_t n, doubles x, doubles y, doubles extent) {
-    const vector<double> xx(x.begin(), x.end()),
-                         yy(y.begin(), y.end());
+    vector<double> xx(x.begin(), x.end()),
+                   yy(y.begin(), y.end());
 
-    vector<int64_t> xd = hilbert::grid::coordinateToDimension(int64_t(1) << n, xx, extent["xmax"], extent["xmin"]),
-                    yd = hilbert::grid::coordinateToDimension(int64_t(1) << n, yy, extent["ymax"], extent["ymin"]);
+    vector<int64_t> xd = hilbert::grid::xToCol(int64_t(1) << n, xx, extent["xmax"], extent["xmin"]),
+                    yd = hilbert::grid::yToRow(int64_t(1) << n, yy, extent["ymax"], extent["ymin"]);
 
     const size_t len = xd.size();
 
