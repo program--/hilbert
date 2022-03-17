@@ -67,19 +67,19 @@ position_to_coords.data.frame <- function(
 position_to_coords.matrix <- function(
     x, ..., n, extent, coords = c(1, 2), attach = TRUE
 ) {
-    .Class <- class(x[[coords[1]]])
+    .Class <- class(x[, coords[1]])
     coordinates <- NextMethod(
         "position_to_coords",
-        x = x[[coords[1]]],
-        y = x[[coords[2]]],
+        x = x[, coords[1]],
+        y = x[, coords[2]],
         ...,
         n = n,
         extent = extent
     )
 
     if (attach) {
-        x[[coords[1]]] <- coordinates$x
-        x[[coords[2]]] <- coordinates$y
+        x[, coords[1]] <- coordinates$x
+        x[, coords[2]] <- coordinates$y
         return(x)
     }
 
@@ -155,19 +155,19 @@ position_to_coords64.data.frame <- function(
 position_to_coords64.matrix <- function(
     x, ..., n, extent, coords = c(1, 2), attach = TRUE
 ) {
-    .Class <- class(x[[coords[1]]])
+    .Class <- class(x[, coords[1]])
     coordinates <- NextMethod(
         "position_to_coords64",
-        x = x[[coords[1]]],
-        y = x[[coords[2]]],
+        x = x[, coords[1]],
+        y = x[, coords[2]],
         ...,
         n = n,
         extent = extent
     )
 
     if (attach) {
-        x[[coords[1]]] <- coordinates$x
-        x[[coords[2]]] <- coordinates$y
+        x[, coords[1]] <- coordinates$x
+        x[, coords[2]] <- coordinates$y
         return(x)
     }
 

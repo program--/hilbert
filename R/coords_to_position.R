@@ -66,21 +66,21 @@ coords_to_position.data.frame <- function(
 coords_to_position.matrix <- function(
     x, ..., n, extent, coords = c(1, 2), attach = TRUE
 ) {
-    if (is.null(extent)) extent <- .extent(x[[coords[1]]], x[[coords[2]]])
+    if (is.null(extent)) extent <- .extent(x[, coords[1]], x[, coords[2]])
 
-    .Class <- class(x[[coords[1]]])
+    .Class <- class(x[, coords[1]])
     positions <- NextMethod(
         "coords_to_position",
-        x = x[[coords[1]]],
-        y = x[[coords[2]]],
+        x = x[, coords[1]],
+        y = x[, coords[2]],
         ...,
         n = n,
         extent = extent
     )
 
     if (attach) {
-        x[[coords[1]]] <- positions[[1]]
-        x[[coords[2]]] <- positions[[2]]
+        x[, coords[1]] <- positions[, 1]
+        x[, coords[2]] <- positions[, 2]
         return(x)
     }
 
@@ -91,23 +91,13 @@ coords_to_position.matrix <- function(
 #' @export
 coords_to_position.numeric <- function(x, y, ..., n, extent) {
     if (is.null(extent)) extent <- .extent(x, y)
-
-    .Class <- class(x)
-    NextMethod(
-        "coords_to_position",
-        x = x,
-        y = y,
-        ...,
-        n = n,
-        extent = extent
-    )
+    HILBERT_coords_to_xy_(n, x, y, extent)
 }
 
 #' @rdname coords_to_position
 #' @export
 coords_to_position.double <- function(x, y, ..., n, extent) {
     if (is.null(extent)) extent <- .extent(x, y)
-
     HILBERT_coords_to_xy_(n, x, y, extent)
 }
 
@@ -115,7 +105,6 @@ coords_to_position.double <- function(x, y, ..., n, extent) {
 #' @export
 coords_to_position.integer <- function(x, y, ..., n, extent) {
     if (is.null(extent)) extent <- .extent(x, y)
-
     HILBERT_coords_to_xy_(n, x, y, extent)
 }
 
@@ -156,21 +145,21 @@ coords_to_position64.data.frame <- function(
 coords_to_position64.matrix <- function(
     x, ..., n, extent, coords = c(1, 2), attach = TRUE
 ) {
-    if (is.null(extent)) extent <- .extent(x[[coords[1]]], x[[coords[2]]])
+    if (is.null(extent)) extent <- .extent(x[, coords[1]], x[, coords[2]])
 
-    .Class <- class(x[[coords[1]]])
+    .Class <- class(x[, coords[1]])
     positions <- NextMethod(
         "coords_to_position64",
-        x = x[[coords[1]]],
-        y = x[[coords[2]]],
+        x = x[, coords[1]],
+        y = x[, coords[2]],
         ...,
         n = n,
         extent = extent
     )
 
     if (attach) {
-        x[[coords[1]]] <- positions[[1]]
-        x[[coords[2]]] <- positions[[2]]
+        x[, coords[1]] <- positions[, 1]
+        x[, coords[2]] <- positions[, 2]
         return(x)
     }
 
@@ -181,16 +170,10 @@ coords_to_position64.matrix <- function(
 #' @export
 coords_to_position64.numeric <- function(x, y, ..., n, extent) {
     if (is.null(extent)) extent <- .extent(x, y)
-
-    .Class <- class(x)
-    NextMethod(
-        "coords_to_position64",
-        x = x,
-        y = y,
-        ...,
-        n = n,
-        extent = extent
-    )
+    pos      <- HILBERT_coords_to_xy_64_(n, x, y, extent)
+    pos[[1]] <- bit64::as.integer64(pos[[1]])
+    pos[[2]] <- bit64::as.integer64(pos[[2]])
+    pos
 }
 
 #' @rdname coords_to_position

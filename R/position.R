@@ -48,12 +48,12 @@ position.data.frame <- function(h, ..., n, idx = 1, attach = TRUE) {
 #' @rdname position
 #' @export
 position.matrix <- function(h, ..., n, idx = 1, attach = TRUE) {
-    .Class    <- class(h[[idx[1]]])
-    positions <- NextMethod("position", h = h[[idx[1]]], ..., n = n)
+    .Class    <- class(h[, idx[1]])
+    positions <- NextMethod("position", h = h[, idx[1]], ..., n = n)
 
     if (attach) {
-        h[[ncol(h) + 1]] <- positions[[1]]
-        h[[ncol(h) + 1]] <- positions[[2]]
+        h[, ncol(h) + 1] <- positions[[1]]
+        h[, ncol(h) + 1] <- positions[[2]]
         return(h)
     }
 
@@ -98,12 +98,12 @@ position64.data.frame <- function(h, ..., n, idx = 1, attach = TRUE) {
 #' @rdname position
 #' @export
 position64.matrix <- function(h, ..., n, idx = 1, attach = TRUE) {
-    .Class    <- class(h[[idx[1]]])
+    .Class    <- class(h[, idx[1]])
     positions <- NextMethod("position64", h = h[[idx[1]]], ..., n = n)
 
     if (attach) {
-        h[[ncol(h) + 1]] <- positions[[1]]
-        h[[ncol(h) + 1]] <- positions[[2]]
+        h[, ncol(h) + 1] <- positions[[1]]
+        h[, ncol(h) + 1] <- positions[[2]]
         return(h)
     }
 
