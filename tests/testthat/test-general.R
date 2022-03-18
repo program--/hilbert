@@ -27,6 +27,23 @@ testthat::test_that("basic index @ n = 2", {
     expect_equal(hilbert::index(3, 3, n = 2L), 10)
 })
 
+testthat::test_that("coordinates are converted to correct position", {
+    x <- c(-77.85641, -77.86663, -77.85641, -77.86358, -77.86372, -77.86627)
+    y <- c(34.35935, 34.36440, 34.35936, 34.36328, 34.36336, 34.35290)
+    extent <- c(xmax = max(x), xmin = min(x), ymax = max(y), ymin = min(y))
+
+    posX <- c(7, 0, 7, 2, 2, 0)
+    posY <- c(4, 7, 4, 7, 7, 0)
+
+    posTest <- hilbert::coords_to_position(x = x, y = y, n = 3L, extent = extent)
+    print(posTest)
+    print(data.frame(x = posX, y = posY))
+    expect_equal(
+        posTest,
+        data.frame(x = posX, y = posY)
+    )
+})
+
 testthat::test_that("general indexing works", {
     x <- c(-77.85641, -77.86663, -77.85641, -77.86358, -77.86372, -77.86627)
     y <- c(34.35935, 34.36440, 34.35936, 34.36328, 34.36336, 34.35290)
