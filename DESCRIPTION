@@ -1,13 +1,13 @@
 Package: hilbert
 Title: Coordinate Indexing on Hilbert Curves
-Version: 0.1.0.9000
+Version: 0.2.0.9000
 Authors@R: 
     person(given = "Justin",
            family = "Singh-Mohudpur",
            role = c("aut", "cre"),
            email = "justin@justinsingh.me",
            comment = c(ORCID = "0000-0002-5233-5799"))
-Description: Provides utilities for quick indexing/encoding of coordinates to Hilbert Curves.
+Description: Provides utilities for indexing/encoding coordinates to Hilbert Curves.
 URL: https://hilbert.justinsingh.me, https://github.com/program--/hilbert
 BugReports: https://github.com/program--/hilbert/issues
 License: MIT + file LICENSE
@@ -16,8 +16,6 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 SystemRequirements: C++11
-Suggests:
-    testthat (>= 3.0.0),
-    covr,
-    bit64 (>= 4.0.0)
+Suggests: bit64 (>= 4.0.0), testthat (>= 3.0.0), covr
+LinkingTo: cpp11
 Config/testthat/edition: 3
