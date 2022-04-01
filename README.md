@@ -45,8 +45,8 @@ e <- c(xmax = 180, xmin = -180, ymax = 90, ymin = -90)
 ``` r
 pos <- hilbert::coords_to_position(x, y, n = n, extent = e)
 pos
-#>          x       y
-#> 1 12016978 5186084
+#>         x        y
+#> 1 4760236 11591131
 ```
 
 ### Position to Index
@@ -54,8 +54,8 @@ pos
 ``` r
 index <- hilbert::index(pos, coords = c("x", "y"), n = n, attach = TRUE)
 index
-#>          x       y               h
-#> 1 12016978 5186084 245468611058974
+#>         x        y               h
+#> 1 4760236 11591131 129470580596149
 ```
 
 ### Index to Position
@@ -63,8 +63,8 @@ index
 ``` r
 new_pos <- hilbert::position(index, idx = "h", n = n, attach = FALSE)
 new_pos
-#>          x       y
-#> 1 12016978 5186084
+#>         x        y
+#> 1 4760236 11591131
 ```
 
 ### Position to Coordinates
@@ -73,19 +73,5 @@ new_pos
 new_xy <- hilbert::position_to_coords(new_pos, coords = c("x", "y"), extent = e, n = n, attach = TRUE)
 new_xy
 #>           x        y
-#> 1 -77.85639 34.35935
+#> 1 -77.85641 34.35935
 ```
-
-## Roadmap
-
--   [x] General indexing/retrieval
--   [x] 64-bit Integer Support (via `bit64`)
-    -   [x] `index()`
-    -   [x] `position()`
-    -   [x] `coords_to_position()`
-    -   [x] `position_to_coords()`
--   [ ] Multiprecision Integer Support (via `bignum`)
-    -   [ ] `index()`
-    -   [ ] `position()`
-    -   [ ] `coords_to_position()`
-    -   [ ] `position_to_coords()`
