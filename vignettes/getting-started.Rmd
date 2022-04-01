@@ -75,7 +75,7 @@ extent <- c(xmin = min(quakes$long), ymin = min(quakes$lat),
 
 ```{r, echo = FALSE}
 knitr::kable(
-  t(quakes_extent),
+  t(extent),
   format = "html",
   col.names = c("X-Min", "Y-Min", "X-Max", "Y-Max"),
   align = "c",
