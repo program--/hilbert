@@ -51,11 +51,13 @@ knitr::kable(
 ### Extent
 
 :::{style="display:flex;align-items:center;"}
+
 ::::::{style="margin-right:1rem;"}
 ```{r, echo = FALSE, out.width="100%", out.extra='style="border:none;pointer-events:none;user-select:none;"'}
 knitr::include_graphics("1.png")
 ```
 ::::::
+
 ::::::{}
 When exploring this dataset, we see that it is particularly suitable for indexing
 on a space-filling curve, due to the *closeness* of points. To index these points,
@@ -84,6 +86,7 @@ knitr::kable(
 )
 ```
 ::::::
+
 :::
 
 > **Note:** *closeness* is often subjective. Generally, the real factor for determining how
@@ -113,7 +116,7 @@ knitr::kable(tmp, col.names = NULL, row.names = TRUE)
 ```
 
 Notice here, we choose $n = 4$. In the context of our grid, $n$ is the **dimensions exponent**.
-It determines the dimensions of our underlying grid, such that when $n = 6$, we have a
+It determines the dimensions of our underlying grid, such that when $n = 4$, we have a
 $$2^n \times 2^n = 2^4 \times 2^4 = 16 \times 16 \text{ grid.}$$
 A $2^n \times 2^n$ grid is required due to the construction of a Hilbert Curve,
 see: [Space-filling Curves](https://wikipedia.org/wiki/Space-filling_curve).
