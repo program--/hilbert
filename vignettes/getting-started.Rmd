@@ -121,7 +121,7 @@ Notice here, we choose $n = 4$. In the context of our grid, $n$ is the **dimensi
 It determines the dimensions of our underlying grid, such that when $n = 4$, we have a
 $$2^n \times 2^n = 2^4 \times 2^4 = 16 \times 16 \text{ grid.}$$
 A $2^n \times 2^n$ grid is required due to the construction of a Hilbert Curve,
-see: [Space-filling Curves](https://wikipedia.org/wiki/Space-filling_curve).
+see: [Space-filling Curves](https://en.wikipedia.org/wiki/Space-filling_curve).
 
 :::{style="display:flex;align-items:center;"}
 ::::::{}
