@@ -252,7 +252,11 @@ stations
 <div class="section level3">
 <h3 id="extent">Extent<a class="anchor" aria-label="anchor" href="#extent"></a>
 </h3>
-<p>:::{style=“display:flex;align-items:center;”} ::::::{style=“margin-right:1rem;”} <img src="1.png" width="100%" style="border:none;pointer-events:none;user-select:none;"> :::::: ::::::{} When exploring this dataset, we see that it is particularly suitable for indexing on a space-filling curve, due to the <em>closeness</em> of points. To index these points, we’ll perform the following operations:</p>
+<p>:::{style=“display:flex;align-items:center;”}</p>
+<div style="margin-right:1rem;">
+<p><img src="1.png" width="100%" style="border:none;pointer-events:none;user-select:none;"></p>
+</div>
+<p>::::::{} When exploring this dataset, we see that it is particularly suitable for indexing on a space-filling curve, due to the <em>closeness</em> of points. To index these points, we’ll perform the following operations:</p>
 <ol style="list-style-type: decimal">
 <li>Get the <strong>extent</strong> of the dataset.</li>
 <li>Find the <strong>position</strong> of each point.</li>
@@ -295,7 +299,8 @@ Y-Max
 </td>
 </tr></tbody>
 </table>
-<p>:::::: :::</p>
+<p>::::::</p>
+<p>:::</p>
 <blockquote>
 <p><strong>Note:</strong> <em>closeness</em> is often subjective. Generally, the real factor for determining how suitable coordinates are for indexing to a space-filling curve is the precision requirements. In this case, the precision of seismic events need not be highly-precise. However, in the case of coordinates for buildings, then high-precision is usually a requirement.</p>
 </blockquote>
@@ -362,7 +367,7 @@ Y-Max
 <td align="left">…</td>
 </tr>
 </tbody></table>
-<p>Notice here, we choose <span class="math inline">\(n = 4\)</span>. In the context of our grid, <span class="math inline">\(n\)</span> is the <strong>dimensions exponent</strong>. It determines the dimensions of our underlying grid, such that when <span class="math inline">\(n = 6\)</span>, we have a <span class="math display">\[2^n \times 2^n = 2^4 \times 2^4 = 16 \times 16 \text{ grid.}\]</span> A <span class="math inline">\(2^n \times 2^n\)</span> grid is required due to the construction of a Hilbert Curve, see: <a href="https://wikipedia.org/wiki/Space-filling_curve" class="external-link">Space-filling Curves</a>.</p>
+<p>Notice here, we choose <span class="math inline">\(n = 4\)</span>. In the context of our grid, <span class="math inline">\(n\)</span> is the <strong>dimensions exponent</strong>. It determines the dimensions of our underlying grid, such that when <span class="math inline">\(n = 4\)</span>, we have a <span class="math display">\[2^n \times 2^n = 2^4 \times 2^4 = 16 \times 16 \text{ grid.}\]</span> A <span class="math inline">\(2^n \times 2^n\)</span> grid is required due to the construction of a Hilbert Curve, see: <a href="https://wikipedia.org/wiki/Space-filling_curve" class="external-link">Space-filling Curves</a>.</p>
 <div style="display:flex;align-items:center;">
 <div>
 <p>Now that we have our positions, we can visually see the cells that each point falls into. Since the grid in this case is <em>coarse</em>, many points will be indexed to the same cell, for example, the upper left-most cell.</p>
