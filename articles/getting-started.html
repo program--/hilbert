@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hilbert</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.1</span>
       </span>
     </div>
 
@@ -254,11 +254,7 @@ stations
 </h3>
 <p>When working with coordinate data, we first need to consider the bounds of our grid. Some methods utilize the maximum possible grid (i.e. <a href="https://en.wikipedia.org/wiki/Geohash" class="external-link">Geohash</a>).</p>
 <p>In this case, we will look at a localized approach, using the <strong>extent</strong> of our dataset as the grid bounds.</p>
-<p>:::{style=“display:flex;align-items:center;”}</p>
-<div style="margin-right:1rem;">
-<p><img src="1.png" width="100%" style="border:none;pointer-events:none;user-select:none;"></p>
-</div>
-<p>::::::{} When exploring this dataset, we see that it is particularly suitable for indexing on a space-filling curve, due to the <em>closeness</em> of points. To index these points, we’ll perform the following operations:</p>
+<p>:::{style=“display:flex;align-items:center;”} ::::::{style=“margin-right:1rem;”} <img src="1.png" width="100%" style="border:none;pointer-events:none;user-select:none;"> :::::: ::::::{} When exploring this dataset, we see that it is particularly suitable for indexing on a space-filling curve, due to the <em>closeness</em> of points. To index these points, we’ll perform the following operations:</p>
 <ol style="list-style-type: decimal">
 <li>Get the <strong>extent</strong> of the dataset.</li>
 <li>Find the <strong>position</strong> of each point.</li>
@@ -301,8 +297,7 @@ Y-Max
 </td>
 </tr></tbody>
 </table>
-<p>::::::</p>
-<p>:::</p>
+<p>:::::: :::</p>
 <blockquote>
 <p><strong>Note:</strong> <em>closeness</em> is often subjective. Generally, the real factor for determining how suitable coordinates are for indexing to a space-filling curve is the precision requirements. In this case, the precision of seismic events need not be highly-precise. However, in the case of coordinates for buildings, then high-precision is usually a requirement.</p>
 </blockquote>
