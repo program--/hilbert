@@ -42,6 +42,18 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/getting-started.html">Getting Started</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="news/index.html">Changelog</a>
 </li>
@@ -100,8 +112,8 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pos</span> <span class="op">&lt;-</span> <span class="fu">hilbert</span><span class="fu">::</span><span class="fu"><a href="reference/coords_to_position.html">coords_to_position</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, n <span class="op">=</span> <span class="va">n</span>, extent <span class="op">=</span> <span class="va">e</span><span class="op">)</span>
 <span class="va">pos</span>
-<span class="co">#&gt;          x       y</span>
-<span class="co">#&gt; 1 12016978 5186084</span></code></pre></div>
+<span class="co">#&gt;         x        y</span>
+<span class="co">#&gt; 1 4760236 11591131</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="position-to-index">Position to Index<a class="anchor" aria-label="anchor" href="#position-to-index"></a>
@@ -109,8 +121,8 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">index</span> <span class="op">&lt;-</span> <span class="fu">hilbert</span><span class="fu">::</span><span class="fu"><a href="reference/index.html">index</a></span><span class="op">(</span><span class="va">pos</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span>, n <span class="op">=</span> <span class="va">n</span>, attach <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">index</span>
-<span class="co">#&gt;          x       y               h</span>
-<span class="co">#&gt; 1 12016978 5186084 245468611058974</span></code></pre></div>
+<span class="co">#&gt;         x        y               h</span>
+<span class="co">#&gt; 1 4760236 11591131 129470580596149</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="index-to-position">Index to Position<a class="anchor" aria-label="anchor" href="#index-to-position"></a>
@@ -118,8 +130,8 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">new_pos</span> <span class="op">&lt;-</span> <span class="fu">hilbert</span><span class="fu">::</span><span class="fu"><a href="reference/position.html">position</a></span><span class="op">(</span><span class="va">index</span>, idx <span class="op">=</span> <span class="st">"h"</span>, n <span class="op">=</span> <span class="va">n</span>, attach <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="va">new_pos</span>
-<span class="co">#&gt;          x       y</span>
-<span class="co">#&gt; 1 12016978 5186084</span></code></pre></div>
+<span class="co">#&gt;         x        y</span>
+<span class="co">#&gt; 1 4760236 11591131</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="position-to-coordinates">Position to Coordinates<a class="anchor" aria-label="anchor" href="#position-to-coordinates"></a>
@@ -128,51 +140,8 @@
 <code class="sourceCode R"><span class="va">new_xy</span> <span class="op">&lt;-</span> <span class="fu">hilbert</span><span class="fu">::</span><span class="fu"><a href="reference/position_to_coords.html">position_to_coords</a></span><span class="op">(</span><span class="va">new_pos</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span><span class="op">)</span>, extent <span class="op">=</span> <span class="va">e</span>, n <span class="op">=</span> <span class="va">n</span>, attach <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">new_xy</span>
 <span class="co">#&gt;           x        y</span>
-<span class="co">#&gt; 1 -77.85639 34.35935</span></code></pre></div>
+<span class="co">#&gt; 1 -77.85641 34.35935</span></code></pre></div>
 </div>
-</div>
-<div class="section level2">
-<h2 id="roadmap">Roadmap<a class="anchor" aria-label="anchor" href="#roadmap"></a>
-</h2>
-<ul>
-<li>
-<input type="checkbox" disabled checked>
-General indexing/retrieval</li>
-<li>
-<input type="checkbox" disabled checked>
-64-bit Integer Support (via <code>bit64</code>)<ul>
-<li>
-<input type="checkbox" disabled checked><code><a href="reference/index.html">index()</a></code>
-</li>
-<li>
-<input type="checkbox" disabled checked><code><a href="reference/position.html">position()</a></code>
-</li>
-<li>
-<input type="checkbox" disabled checked><code><a href="reference/coords_to_position.html">coords_to_position()</a></code>
-</li>
-<li>
-<input type="checkbox" disabled checked><code><a href="reference/position_to_coords.html">position_to_coords()</a></code>
-</li>
-</ul>
-</li>
-<li>
-<input type="checkbox" disabled>
-Multiprecision Integer Support (via <code>bignum</code>)<ul>
-<li>
-<input type="checkbox" disabled><code><a href="reference/index.html">index()</a></code>
-</li>
-<li>
-<input type="checkbox" disabled><code><a href="reference/position.html">position()</a></code>
-</li>
-<li>
-<input type="checkbox" disabled><code><a href="reference/coords_to_position.html">coords_to_position()</a></code>
-</li>
-<li>
-<input type="checkbox" disabled><code><a href="reference/position_to_coords.html">position_to_coords()</a></code>
-</li>
-</ul>
-</li>
-</ul>
 </div>
 </div>
   </div>
