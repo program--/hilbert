@@ -136,7 +136,7 @@ points that fall under the same index. For more information,
 see: [Spatial Index](https://en.wikipedia.org/wiki/Spatial_database#Spatial_index).
 
 If we want to make our grid *finer*, we can increase the $n$ value used. For example,
-setting $n = 6$ will give us a $64 \times 64$ grid, which will segement the points further.
+setting $n = 6$ will give us a $64 \times 64$ grid, which will segment the points further.
 ::::::
 ::::::{style="margin-left:1rem;"}
 ```{r, echo = FALSE, out.width="100%", out.extra='style="border:none;pointer-events:none;user-select:none;"'}
