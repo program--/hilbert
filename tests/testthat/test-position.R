@@ -3,6 +3,42 @@ testthat::test_that("[32-bit] basic postion @ n = 1", {
     expect_equal(hilbert::position(1, n = 1L), data.frame(x = 0, y = 1))
     expect_equal(hilbert::position(2, n = 1L), data.frame(x = 1, y = 1))
     expect_equal(hilbert::position(3, n = 1L), data.frame(x = 1, y = 0))
+
+    expect_equal(
+        hilbert::position(
+            data.frame(
+                some = 1:3,
+                fake = 1:3,
+                index = 1:3
+            ),
+            idx = 3L,
+            n = 1L
+        ),
+        data.frame(
+            some  = 1:3,
+            fake  = 1:3,
+            index = 1:3,
+            x     = c(0, 1, 1),
+            y     = c(1, 1, 0)
+        )
+    )
+
+    expect_equal(
+        hilbert::position(
+            data.frame(
+                some = 1:3,
+                fake = 1:3,
+                index = 1:3
+            ),
+            idx = 3L,
+            n = 1L,
+            attach = FALSE
+        ),
+        data.frame(
+            x     = c(0, 1, 1),
+            y     = c(1, 1, 0)
+        )
+    )
 })
 
 testthat::test_that("[32-bit] basic position @ n = 2", {
