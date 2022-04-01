@@ -1,6 +1,6 @@
 Package: hilbert
 Title: Coordinate Indexing on Hilbert Curves
-Version: 0.2.0.9000
+Version: 0.2.1
 Authors@R: 
     person(given = "Justin",
            family = "Singh-Mohudpur",

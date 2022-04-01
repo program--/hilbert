@@ -1,3 +1,6 @@
+# hilbert 0.2.1
+- Added simple vignette for understanding the encoding process.
+
 # hilbert 0.2.0
 - Added 64-bit integer support for `index`, `position`,
   `coords_to_position`, and `position_to_coords`. If these

@@ -56,15 +56,11 @@ Some methods utilize the maximum possible grid (i.e. [Geohash](https://en.wikipe
 In this case, we will look at a localized approach, using the **extent** of our dataset as the grid bounds.
 
 :::{style="display:flex;align-items:center;"}
-
 ::::::{style="margin-right:1rem;"}
-
 ```{r, echo = FALSE, out.width="100%", out.extra='style="border:none;pointer-events:none;user-select:none;"'}
 knitr::include_graphics("1.png")
 ```
-
 ::::::
-
 ::::::{}
 When exploring this dataset, we see that it is particularly suitable for indexing
 on a space-filling curve, due to the *closeness* of points. To index these points,
@@ -93,7 +89,6 @@ knitr::kable(
 )
 ```
 ::::::
-
 :::
 
 > **Note:** *closeness* is often subjective. Generally, the real factor for determining how
