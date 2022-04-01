@@ -50,12 +50,19 @@ knitr::kable(
 
 ### Extent
 
+When working with coordinate data, we first need to consider the bounds of our grid.
+Some methods utilize the maximum possible grid (i.e. [Geohash](https://en.wikipedia.org/wiki/Geohash)).
+
+In this case, we will look at a localized approach, using the **extent** of our dataset as the grid bounds.
+
 :::{style="display:flex;align-items:center;"}
 
 ::::::{style="margin-right:1rem;"}
+
 ```{r, echo = FALSE, out.width="100%", out.extra='style="border:none;pointer-events:none;user-select:none;"'}
 knitr::include_graphics("1.png")
 ```
+
 ::::::
 
 ::::::{}
