@@ -123,9 +123,12 @@ be the same as the <code>n</code> used in <code>index</code>.</p></dd>
 columns are named <code>x</code> and <code>y</code>; otherwise, it is two unnamed columns at
 the end of the matrix.</p></dd>
 </dl></div>
-    <div id="see-also">
-    <h2>See also</h2>
-    <div class="dont-index"><p>index</p></div>
+    <div id="value">
+    <h2>Value</h2>
+    <p>A <code>data.frame</code> containing the positions as <code>integer</code>columns <code>x</code> and <code>y</code>, or the original object
+(<code>data.frame</code> or <code>matrix</code>) with the columns attached.
+When <code>n</code> is greater than 15, the positions are of
+type <code><a href="https://rdrr.io/pkg/bit64/man/bit64-package.html" class="external-link">bit64::integer64</a></code>.</p>
     </div>
 
   </div>
