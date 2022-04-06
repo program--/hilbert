@@ -15,7 +15,11 @@
 #' `data.frame`/`matrix`. If `h` is a `data.frame`, then the
 #' columns are named `x` and `y`; otherwise, it is two unnamed columns at
 #' the end of the matrix.
-#' @seealso index
+#' @return A `data.frame` containing the positions as `integer`
+#'         columns `x` and `y`, or the original object
+#'         (`data.frame` or `matrix`) with the columns attached.
+#'         When `n` is greater than 15, the positions are of
+#'         type `bit64::integer64`.
 #' @rdname position
 #' @export
 position <- function(h, ..., n = 10L) {

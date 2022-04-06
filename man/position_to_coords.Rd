@@ -64,6 +64,12 @@ contain the positions.}
 
 \item{y}{Integer vector corresponding to Column positions.}
 }
+\value{
+A \code{data.frame} containing the coordinates as \code{numeric}
+columns \code{x} and \code{y}, or the original object
+(\code{data.frame} or \code{matrix}) with the positions
+replaced with the coordinates.
+}
 \description{
 Convert Grid Positions to Coordinates
 }

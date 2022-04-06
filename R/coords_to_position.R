@@ -21,6 +21,11 @@
 #' @param attach
 #' If `TRUE`, adds the position as new columns to the given
 #' `data.frame`/`matrix`. This will *replace* the coordinate columns.
+#' @return A `data.frame` containing the positions as `integer`
+#'         columns `x` and `y`, or the original object
+#'         (`data.frame` or `matrix`) with the coordinates
+#'         replaced with the grid positions. When `n` is greater than 15,
+#'         the positions are of type `bit64::integer64`.
 #' @rdname coords_to_position
 #' @export
 coords_to_position <- function(x, ..., n = 10L, extent = NULL) {

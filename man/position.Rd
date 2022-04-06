@@ -62,9 +62,13 @@ be the same as the \code{n} used in \code{index}.}
 columns are named \code{x} and \code{y}; otherwise, it is two unnamed columns at
 the end of the matrix.}
 }
+\value{
+A \code{data.frame} containing the positions as \code{integer}
+columns \code{x} and \code{y}, or the original object
+(\code{data.frame} or \code{matrix}) with the columns attached.
+When \code{n} is greater than 15, the positions are of
+type \code{bit64::integer64}.
+}
 \description{
 Get index positions from a Hilbert Curve
-}
-\seealso{
-index
 }

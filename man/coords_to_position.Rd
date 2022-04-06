@@ -62,6 +62,13 @@ contain the coordinates.}
 
 \item{y}{Numeric vector corresponding to Y coordinates.}
 }
+\value{
+A \code{data.frame} containing the positions as \code{integer}
+columns \code{x} and \code{y}, or the original object
+(\code{data.frame} or \code{matrix}) with the coordinates
+replaced with the grid positions. When \code{n} is greater than 15,
+the positions are of type \code{bit64::integer64}.
+}
 \description{
 Convert Coordinates to Grid Positions
 }

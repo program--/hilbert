@@ -7,3 +7,4 @@
 ^cran-comments\.md$
 ^rosm\.cache$
 ^data\-raw$
+^CRAN-SUBMISSION$

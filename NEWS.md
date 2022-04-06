@@ -1,5 +1,6 @@
 # hilbert 0.2.1
 - Added simple vignette for understanding the encoding process.
+- Added return value documentation for core functions.
 
 # hilbert 0.2.0
 - Added 64-bit integer support for `index`, `position`,

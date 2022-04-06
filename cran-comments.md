@@ -1,3 +1,11 @@
+## Resubmission
+
+This is a resubmission to address the issues in the initial submission.
+
+The following changes were made:
+- Added reference to the paper containing the iterative encoding/decoding algorithm in DESCRIPTION.
+- Added \value to the exported functions' .Rd files.
+
 ## Test environments
 
 * GitHub Actions (ubuntu-18.04): devel, release, olrel, 3.6, 3.5, 3.4

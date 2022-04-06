@@ -7,7 +7,8 @@ Authors@R:
            role = c("aut", "cre"),
            email = "justin@justinsingh.me",
            comment = c(ORCID = "0000-0002-5233-5799"))
-Description: Provides utilities for indexing/encoding coordinates to Hilbert Curves.
+Description: Provides utilities for encoding and decoding coordinates to/from Hilbert curves
+  based on the iterative encoding implementation described in Chen et al. (2006) <doi:10.1002/spe.793>.
 URL: https://hilbert.justinsingh.me, https://github.com/program--/hilbert
 BugReports: https://github.com/program--/hilbert/issues
 License: MIT + file LICENSE

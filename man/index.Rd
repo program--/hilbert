@@ -70,9 +70,12 @@ the end of the matrix.}
 \item{y}{Numeric vector.
 Corresponds to the columns of a position.}
 }
+\value{
+An \code{integer} vector of Hilbert indices, or when \code{attach} is \code{TRUE},
+the original object (\code{data.frame} or \code{matrix}) with a new \code{integer}
+column (\code{h} for \code{data.frame}) containing the Hilbert indices. When
+\code{n} is greater than 15, the vector is of type \code{bit64::integer64}.
+}
 \description{
 Index positions to a Hilbert Curve
-}
-\seealso{
-position
 }

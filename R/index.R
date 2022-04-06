@@ -20,7 +20,10 @@
 #' `data.frame`/`matrix`. If `x` is a `data.frame`, then the
 #' column is named `h`; otherwise, it is an unnamed column at
 #' the end of the matrix.
-#' @seealso position
+#' @return An `integer` vector of Hilbert indices, or when `attach` is `TRUE`,
+#'         the original object (`data.frame` or `matrix`) with a new `integer`
+#'         column (`h` for `data.frame`) containing the Hilbert indices. When
+#'         `n` is greater than 15, the vector is of type `bit64::integer64`.
 #' @rdname index
 #' @export
 index <- function(x, ..., n = 10L) {

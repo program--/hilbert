@@ -20,6 +20,10 @@
 #' @param attach
 #' If `TRUE`, adds the coordinates as new columns to the given
 #' `data.frame`/`matrix`. This will *replace* the position columns.
+#' @return A `data.frame` containing the coordinates as `numeric`
+#'         columns `x` and `y`, or the original object
+#'         (`data.frame` or `matrix`) with the positions
+#'         replaced with the coordinates.
 #' @rdname position_to_coords
 #' @export
 position_to_coords <- function(x, ..., n = 10L, extent = NULL) {
